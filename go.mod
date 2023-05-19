@@ -1,4 +1,4 @@
-module github.com/RedisGraph/redisgraph-go
+module github.com/amer/redisgraph-go
 
 go 1.12
 
