@@ -13,7 +13,7 @@ import (
 )
 
 func ExampleGraphNew() {
-	conn, _ := redis.Dial("tcp", "0.0.0.0:6379")
+	conn, _ := redis.Dial("tcp", "localhost:6380")
 
 	graph := redisgraph.GraphNew("social", conn)
 
@@ -28,7 +28,7 @@ func ExampleGraphNew() {
 }
 
 func ExampleGraphNew_pool() {
-	host := "localhost:6379"
+	host := "localhost:6380"
 	pool := &redis.Pool{Dial: func() (redis.Conn, error) {
 		return redis.Dial("tcp", host)
 	}}
@@ -109,7 +109,7 @@ func ExampleGraphNew_tls() {
 
 func getConnectionDetails() (host string, password string) {
 	value, exists := os.LookupEnv("REDISGRAPH_TEST_HOST")
-	host = "localhost:6379"
+	host = "localhost:6380"
 	if exists && value != "" {
 		host = value
 	}
