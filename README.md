@@ -15,7 +15,7 @@
 
 Simply do:
 ```sh
-$ go get github.com/redislabs/redisgraph-go
+$ go get github.com/amer/redisgraph-go
 ```
 
 ## Usage
