@@ -86,6 +86,6 @@ func main() {
 	res.Next()
 	r := res.Record()
 	w := r.GetByIndex(0).(*redisgraph.Node)
-	fmt.Println(w.Labels[0])
+	fmt.Println(w.Label)
 	// Output: WorkPlace
 }

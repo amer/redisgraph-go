@@ -3,6 +3,7 @@ module github.com/amer/redisgraph-go
 go 1.12
 
 require (
+	github.com/RedisGraph/redisgraph-go v2.0.2+incompatible
 	github.com/gomodule/redigo v1.8.9
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect

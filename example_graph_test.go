@@ -23,7 +23,7 @@ func ExampleGraphNew() {
 	res.Next()
 	r := res.Record()
 	w := r.GetByIndex(0).(*redisgraph.Node)
-	fmt.Println(w.Labels[0])
+	fmt.Println(w.Label)
 	// Output: WorkPlace
 }
 
@@ -41,7 +41,7 @@ func ExampleGraphNew_pool() {
 	res.Next()
 	r := res.Record()
 	w := r.GetByIndex(0).(*redisgraph.Node)
-	fmt.Println(w.Labels[0])
+	fmt.Println(w.Label)
 	// Output: WorkPlace
 
 }
@@ -104,7 +104,7 @@ func ExampleGraphNew_tls() {
 	res.Next()
 	r := res.Record()
 	w := r.GetByIndex(0).(*redisgraph.Node)
-	fmt.Println(w.Labels[0])
+	fmt.Println(w.Label)
 }
 
 func getConnectionDetails() (host string, password string) {
