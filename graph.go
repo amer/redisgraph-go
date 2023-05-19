@@ -10,7 +10,7 @@ import (
 
 // QueryOptions are a set of additional arguments to be emitted with a query.
 type QueryOptions struct {
-	timeout           int
+	timeout int
 }
 
 // Graph represents a graph, which is a collection of nodes and edges.
@@ -110,7 +110,7 @@ func (g *Graph) Commit() (*QueryResult, error) {
 // NewQueryOptions instantiates a new QueryOptions struct.
 func NewQueryOptions() *QueryOptions {
 	return &QueryOptions{
-		timeout:               -1,
+		timeout: -1,
 	}
 }
 
@@ -147,17 +147,17 @@ func (g *Graph) ROQuery(q string) (*QueryResult, error) {
 }
 
 func (g *Graph) ParameterizedQuery(q string, params map[string]interface{}) (*QueryResult, error) {
-	if(params != nil){
+	if params != nil {
 		q = BuildParamsHeader(params) + q
 	}
-	return g.Query(q);
+	return g.Query(q)
 }
 
 // QueryWithOptions issues a query with the given timeout
 func (g *Graph) QueryWithOptions(q string, options *QueryOptions) (*QueryResult, error) {
 	var r interface{}
 	var err error
-	if(options.timeout >= 0) {
+	if options.timeout >= 0 {
 		r, err = g.Conn.Do("GRAPH.QUERY", g.Id, q, "--compact", "timeout", options.timeout)
 	} else {
 		r, err = g.Conn.Do("GRAPH.QUERY", g.Id, q, "--compact")
@@ -171,17 +171,17 @@ func (g *Graph) QueryWithOptions(q string, options *QueryOptions) (*QueryResult,
 
 // ParameterizedQueryWithOptions issues a parameterized query with the given timeout
 func (g *Graph) ParameterizedQueryWithOptions(q string, params map[string]interface{}, options *QueryOptions) (*QueryResult, error) {
-	if(params != nil){
+	if params != nil {
 		q = BuildParamsHeader(params) + q
 	}
-	return g.QueryWithOptions(q, options);
+	return g.QueryWithOptions(q, options)
 }
 
 // ROQueryWithOptions issues a read-only query with the given timeout
 func (g *Graph) ROQueryWithOptions(q string, options *QueryOptions) (*QueryResult, error) {
 	var r interface{}
 	var err error
-	if(options.timeout >= 0) {
+	if options.timeout >= 0 {
 		r, err = g.Conn.Do("GRAPH.RO_QUERY", g.Id, q, "--compact", "timeout", options.timeout)
 	} else {
 		r, err = g.Conn.Do("GRAPH.RO_QUERY", g.Id, q, "--compact")
@@ -279,7 +279,7 @@ func (g *Graph) CallProcedure(procedure string, yield []string, args ...interfac
 	return g.Query(q)
 }
 
-// Labels, retrieves all node labels.
+// Labels retrieves all node labels.
 func (g *Graph) Labels() []string {
 	qr, _ := g.CallProcedure("db.labels", nil)
 
@@ -291,7 +291,7 @@ func (g *Graph) Labels() []string {
 	return l
 }
 
-// RelationshipTypes, retrieves all edge relationship types.
+// RelationshipTypes retrieves all edge relationship types.
 func (g *Graph) RelationshipTypes() []string {
 	qr, _ := g.CallProcedure("db.relationshipTypes", nil)
 
@@ -303,7 +303,7 @@ func (g *Graph) RelationshipTypes() []string {
 	return rt
 }
 
-// PropertyKeys, retrieves all properties names.
+// PropertyKeys retrieves all properties names.
 func (g *Graph) PropertyKeys() []string {
 	qr, _ := g.CallProcedure("db.propertyKeys", nil)
 
