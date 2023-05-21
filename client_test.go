@@ -430,6 +430,12 @@ func TestUtils(t *testing.T) {
 	res = ToString(10)
 	assert.Equal(t, res, "10")
 
+	res = ToString(uint32(9999))
+	assert.Equal(t, res, "9999")
+
+	res = ToString(int64(301))
+	assert.Equal(t, res, "301")
+
 	res = ToString(1.2)
 	assert.Equal(t, res, "1.2")
 
